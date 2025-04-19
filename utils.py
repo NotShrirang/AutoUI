@@ -16,6 +16,8 @@ def str_to_ui(ui_str):
     globals_ = globals()
     globals_['st'] = st
     globals_['ui_dict'] = ui_str
+    globals_['str_to_ui'] = str_to_ui
+    globals_['web_search'] = web_search
     globals_['inference_gemini'] = inference_gemini
     exec(ui_str, globals_)
     return ui_str
