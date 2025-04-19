@@ -1,0 +1,60 @@
+import streamlit as st
+
+from utils import generate_ui, inference_gemini
+
+st.set_page_config(
+    page_title="AutoUI",
+    page_icon=":robot:",
+    layout="wide",
+)
+
+st.title("AutoUI: Automated UI Generation")
+st.write("This is a simple Streamlit app that generates UI components based on user input.")
+
+if 'chat_input' not in st.session_state:
+    st.session_state['chat_input'] = ""
+
+chat_input = st.text_input("Type your query here...")
+
+if st.session_state['chat_input'] != "":
+    st.subheader(f"You: {st.session_state['chat_input']}")
+
+if chat_input != st.session_state["chat_input"]:
+    st.session_state["chat_input"] = chat_input
+    with st.spinner("Generating UI..."):
+        prompt = f"""You are a helpful assistant.
+            You will be given a prompt and you will respond with a Python code snippet that generates a Streamlit UI based on the prompt.
+            The response should be a valid Python code snippet that can be executed in a Streamlit app.
+
+            Tool 1: Gemini API
+            You will have access to function for inferencing the Gemini API, if process user response from generated UI.
+            Use function `inference_gemini` and pass prompt to it. You don't need to import any libraries or modules.
+            The function will return a response as text.
+            Use the function only if it is of utmost importance.
+
+            Tool 2: Web Search
+            You will have access to function for google search and getting related articles. You can use this tool to get more information about the topic.
+            Use function `web_search` and pass query to it. You don't need to import any libraries or modules.
+            The function will return a response as text.
+            You can use this tool multiple times if needed.
+            The input query should be well written and should be related to the topic, that will directly be searched on Google to get the results.
+
+            Instructions:
+            1. Don't use any external libraries or modules.
+            2. Don't call above given tools unnecessarily.
+            3. Use st.spinner to show loading message while calling above given tools.
+            4. Use Gemini API for processing the web search results.
+
+            OUPUT FORMAT:
+            ```python
+            # Your Python code here
+            ```
+
+            The prompt is: {st.session_state['chat_input']}"""
+        response = inference_gemini(prompt)
+    st.session_state['response'] = response
+
+if 'response' in st.session_state:
+    with st.expander("Response from Gemini API"):
+        st.code(st.session_state['response'], language='python')
+    generate_ui(st.session_state['response'])
