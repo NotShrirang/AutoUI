@@ -2,9 +2,9 @@
 
 <div align="center">
 
-![AutoUI Logo](https://img.shields.io/badge/Auto-UI-blue?style=for-the-badge&logo=streamlit)
+[![AutoUI Logo](https://img.shields.io/badge/Auto-UI-blue?style=for-the-badge&logo=streamlit)](https://auto-ui.streamlit.app/)
 
-[![Streamlit App](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=flat-square&logo=streamlit)](https://autoui.streamlit.app/)
+[![Streamlit App](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=flat-square&logo=streamlit)](https://auto-ui.streamlit.app/)
 [![GitHub License](https://img.shields.io/github/license/NotShrirang/AutoUI?style=flat-square)](LICENSE)
 [![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square&logo=python)](requirements.txt)
 [![Gemini API](https://img.shields.io/badge/Google-Gemini-orange?style=flat-square&logo=google)](https://ai.google.dev/)
@@ -20,8 +20,6 @@ Automated UI generator that creates Streamlit interfaces from natural language p
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [How It Works](#how-it-works)
-- [Core Components](#core-components)
 - [Examples](#examples)
 - [License](#license)
 - [Contributing](#contributing)
